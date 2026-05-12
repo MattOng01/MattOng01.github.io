@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matthew Ong — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a1a;
+      --muted:     #6b6b6b;
+      --rule:      #e0ddd8;
+      --bg:        #faf9f7;
+      --accent:    #1a3a5c;
+      --accent-lt: #e8edf2;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--rule);
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .bio {
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+      font-size: 1rem;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    /* ── Skills bar ── */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+    }
+
+    .skill-tag {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-lt);
+      border: 1px solid #c4d0db;
+      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+    }
+
+    /* ── Contact links ── */
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.4rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--ink);
+    }
+
+    /* ── Project cards ── */
+    .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 1.6rem 1.8rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(26, 58, 92, 0.08);
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .project-arrow {
+      color: var(--accent);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(4px);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-tag {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--accent-lt);
+      border-radius: 3px;
+      padding: 0.15rem 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .project-links .repo-link {
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+    }
+
+    @media (max-width: 600px) {
+      .project-header { flex-direction: column; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Matthew Ong</h1>
+    <p class="bio">
+      Economics Masters student earning a certificate in Land Development and Sustainability
+      at Texas A&amp;M University. Seeking entry-level analyst or research roles in real estate,
+      development, or advisory settings. Strong foundation in economic analysis, real estate
+      finance concepts, and data-driven market research, with applied exposure through
+      graduate coursework.
+    </p>
+    <div class="skills">
+      <span class="skill-tag">Excel</span>
+      <span class="skill-tag">R</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">SAS</span>
+      <span class="skill-tag">Tableau</span>
+      <span class="skill-tag">GIS</span>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/MattOng01" target="_blank">GitHub</a>
+      <!-- Add LinkedIn and email below once ready -->
+      <!-- <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> -->
+      <!-- <a href="mailto:your@email.com">Email</a> -->
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+
+      <!-- Project 1: MSA Unemployment -->
+      <a class="project-card" href="msa-unemployment.html">
+        <div class="project-header">
+          <div class="project-title">GDP Growth and Racial Unemployment Gaps Across U.S. Metro Areas</div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">SAS</span>
+          <span class="project-tag">BEA</span>
+          <span class="project-tag">U.S. Census</span>
+          <span class="project-tag">Labor Economics</span>
+        </div>
+        <p class="project-desc">
+          Analyzed GDP growth trajectories and racial unemployment gaps across U.S. Metropolitan
+          Statistical Areas from 2010 to 2023. Constructed a composite performance score
+          rewarding stable growth over volatility, then compared racial employment equity
+          outcomes across top and bottom performing metros.
+        </p>
+        <div class="project-links">
+          <span>Read case study →</span>
+          <a class="repo-link" href="https://github.com/MattOng01/msa_unemployment" target="_blank">View repository ↗</a>
+        </div>
+      </a>
+
+      <!-- Project 2: KC House Price Appreciation -->
+      <a class="project-card" href="kc-house-price.html">
+        <div class="project-header">
+          <div class="project-title">Kansas City House Price Appreciation</div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Real Estate</span>
+          <span class="project-tag">Housing Markets</span>
+        </div>
+        <p class="project-desc">
+          Analysis of residential house price appreciation trends across the Kansas City metro area.
+        </p>
+        <div class="project-links">
+          <span>Read case study →</span>
+          <a class="repo-link" href="https://github.com/MattOng01/KC_House_Price_Appreciation" target="_blank">View repository ↗</a>
+        </div>
+      </a>
+
+      <!-- Project 3: Yellen Inflation Model -->
+      <a class="project-card" href="yellen-inflation.html">
+        <div class="project-header">
+          <div class="project-title">Yellen Inflation Model — COVID Stress Test</div>
+          <div class="project-arrow">→</div>
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Macroeconomics</span>
+          <span class="project-tag">Inflation</span>
+          <span class="project-tag">COVID-19</span>
+        </div>
+        <p class="project-desc">
+          Stress testing the Yellen inflation forecasting model against the anomalous economic
+          conditions of the COVID-19 period.
+        </p>
+        <div class="project-links">
+          <span>Read case study →</span>
+          <a class="repo-link" href="https://github.com/MattOng01/Yellen-Inflation-Model-COVID-Test" target="_blank">View repository ↗</a>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Matthew Ong · Texas A&amp;M University · 2026
+  </div>
+</footer>
+
+</body>
+</html>
