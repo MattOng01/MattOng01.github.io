@@ -26,6 +26,28 @@ html {
 body { background: var(--bg); }
 .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
 
+/* Back nav */
+.back-nav {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.back-link {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s ease;
+}
+.back-link:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 /* Header */
 header { border-bottom: 1px solid var(--rule); padding: 3.5rem 0 2.5rem; text-align: center; }
 h1 {
@@ -137,13 +159,7 @@ a:hover { text-decoration: underline; }
 /* Code inline */
 code { font-family: monospace; font-size: 0.85rem; color: var(--accent); }
 
-/* Footer */
-footer {
-  border-top: 1px solid var(--rule); padding: 2.5rem 0;
-  font-family: var(--sans); font-size: 0.8rem; font-weight: 300;
-  color: var(--muted); text-align: center;
-}
-
+/* Repo strip */
 .repo-strip {
   display: flex;
   align-items: center;
@@ -170,6 +186,13 @@ footer {
 .repo-arrow { margin-left: auto; color: var(--muted); transition: transform 0.2s ease; }
 .repo-strip:hover .repo-arrow { transform: translateX(4px); }
 
+/* Footer */
+footer {
+  border-top: 1px solid var(--rule); padding: 2.5rem 0;
+  font-family: var(--sans); font-size: 0.8rem; font-weight: 300;
+  color: var(--muted); text-align: center;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .gap-grid { grid-template-columns: 1fr; }
@@ -182,6 +205,12 @@ footer {
 </style>
 </head>
 <body>
+
+<nav class="back-nav">
+  <div class="container">
+    <a href="index.html" class="back-link">&#8592; Back to portfolio</a>
+  </div>
+</nav>
 
 <header>
   <div class="container">
@@ -199,15 +228,16 @@ footer {
 
 <main class="container">
 
-<a href="https://github.com/MatthewOng01/KC_House_Price_Appreciation" target="_blank" rel="noopener noreferrer" class="repo-strip">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-  </svg>
-  <span class="repo-label">matthew-ong / kc-housing-appreciation</span>
-  <span style="color:var(--muted);font-size:0.82rem;">Replication scripts &mdash; SAS, QGIS, R</span>
-  <span class="repo-arrow">&#8594;</span>
-</a>
-  
+  <!-- Repo strip -->
+  <a href="https://github.com/MatthewOng01/KC_House_Price_Appreciation" target="_blank" rel="noopener noreferrer" class="repo-strip" style="margin-top: 2.4rem;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <span class="repo-label">MatthewOng01 / KC_House_Price_Appreciation</span>
+    <span style="color:var(--muted);font-size:0.82rem;">Replication scripts &mdash; SAS, QGIS, R</span>
+    <span class="repo-arrow">&#8594;</span>
+  </a>
+
   <!-- Overview -->
   <section>
     <h2>Overview</h2>
@@ -223,4 +253,136 @@ footer {
     <h2>Methodology</h2>
 
     <h3>1. Price Appreciation Metric</h3>
-    <p>Five-year cumulative price appreciation is measured using log price change. This formulation reduces skewness 
+    <p>Five-year cumulative price appreciation is measured using log price change. This formulation reduces skewness in housing price distributions while permitting approximate percentage interpretation:</p>
+    <div class="formula">
+      Price Appreciation = ln(P<sub>final</sub>) &minus; ln(P<sub>initial</sub>)
+    </div>
+
+    <h3>2. Spatial Variables</h3>
+    <p>Distances were computed in QGIS from ZIP-code centroids to five major Points of Interest (POIs), then exported as CSV inputs for regression analysis:</p>
+    <div class="gap-grid">
+      <div class="gap-item"><span class="tag">dist_plaza</span>The Plaza</div>
+      <div class="gap-item"><span class="tag">dist_powerlight</span>Power &amp; Light District</div>
+      <div class="gap-item"><span class="tag">dist_legends</span>The Legends</div>
+      <div class="gap-item"><span class="tag">dist_mci</span>MCI Airport</div>
+      <div class="gap-item"><span class="tag">dist_lees_summit</span>Lee&rsquo;s Summit</div>
+    </div>
+    <p>An urban core distance composite was constructed as the mean of the two primary commercial hubs, capturing compounded centrality relative to Kansas City&rsquo;s historic commercial core:</p>
+    <div class="formula">
+      UrbanCoreDist = (Distance<sub>Plaza</sub> + Distance<sub>PowerLight</sub>) / 2
+    </div>
+
+    <h3>3. Econometric Specification</h3>
+    <p>Three OLS specifications are estimated in sequence, adding complexity to isolate the relative contributions of spatial and price-tier effects:</p>
+    <div class="model-spec-row">
+      <div class="model-spec">
+        <span class="tag">Baseline</span>
+        Appreciation<sub>i</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub>&thinsp;Distance<sub>i</sub> + &epsilon;<sub>i</sub>
+      </div>
+      <div class="model-spec">
+        <span class="tag">Extended</span>
+        Adds UrbanCoreDist composite as the primary spatial regressor
+      </div>
+      <div class="model-spec">
+        <span class="tag">Interaction (Preferred)</span>
+        UrbanCoreDist &times; ln(P<sub>initial</sub>) &mdash; tests whether the distance effect varies across price tiers
+      </div>
+    </div>
+    <p>All specifications include diagnostic checks for heteroskedasticity and multicollinearity.</p>
+  </section>
+
+  <!-- Key Findings -->
+  <section>
+    <h2>Key Findings</h2>
+    <div class="findings">
+      <div class="finding">
+        <div class="finding-num">1</div>
+        <p><strong>Stronger suburban appreciation.</strong> Peripheral ZIP codes exhibit stronger five-year price appreciation relative to the urban core, consistent with outward migration and shifting demand patterns over 2021&ndash;2026.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">2</div>
+        <p><strong>Price tier is the primary driver.</strong> Baseline price segmentation &mdash; not urban centrality &mdash; accounts for most observed growth patterns. Lower-priced ZIP codes appreciated faster, consistent with &beta;-convergence dynamics.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">3</div>
+        <p><strong>Interaction term: significant but economically small.</strong> The interaction model confirms that the distance effect varies across price tiers, but the magnitude is modest &mdash; reinforcing that proportional catch-up dynamics, not location, explain the dominant pattern.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">4</div>
+        <p><strong>Preferred model R&sup2;&nbsp;&asymp;&nbsp;0.34.</strong> The interaction specification explains approximately 35% of cross-sectional variation in five-year appreciation &mdash; a strong result given the parsimony of the spatial regressors.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Summary Table -->
+  <section>
+    <h2>Model Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Specification</th>
+          <th>Primary Regressor</th>
+          <th>R&sup2;</th>
+          <th>Key Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>baseline</td>
+          <td>Distance to single POI</td>
+          <td>&mdash;</td>
+          <td>Weak spatial gradient</td>
+        </tr>
+        <tr>
+          <td>extended</td>
+          <td>UrbanCoreDist composite</td>
+          <td>&mdash;</td>
+          <td>Slight improvement; urban core distance negligible</td>
+        </tr>
+        <tr>
+          <td>interaction</td>
+          <td>UrbanCoreDist &times; ln(P<sub>initial</sub>)</td>
+          <td>&asymp; 0.34</td>
+          <td>Price tier dominant; interaction economically small</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Implications -->
+  <section>
+    <h2>Investment &amp; Planning Implications</h2>
+    <p>The convergence result &mdash; that lower-priced ZIP codes appreciated faster over the study period &mdash; carries distinct implications depending on stakeholder perspective.</p>
+
+    <h3>Developers &amp; Asset Managers</h3>
+    <p>Peripheral ZIP codes may present under-recognized appreciation opportunities. Spatial econometric evidence of location-driven capital appreciation can sharpen underwriting models and inform where to allocate development capital ahead of demand trends.</p>
+
+    <h3>Urban Planners &amp; Local Government</h3>
+    <p>Rapid outer-rim appreciation may warrant strategic attention to infrastructure, zoning, and service delivery. Price catch-up in lower-tier submarkets can signal emerging affordability pressures as appreciation outpaces income growth.</p>
+
+    <h3>Market Analysts</h3>
+    <p>Cross-sectional appreciation models should center price-tier controls as a primary covariate. Distance from the urban core, while intuitive, carries limited explanatory power once initial price levels are accounted for.</p>
+  </section>
+
+  <!-- Tooling & Replication -->
+  <section>
+    <h2>Tooling</h2>
+
+    <h3>Pipeline</h3>
+    <div class="gap-grid">
+      <div class="gap-item"><span class="tag">SAS</span>Data cleaning and ZIP code filtering</div>
+      <div class="gap-item"><span class="tag">QGIS</span>Spatial distance computation from ZIP-code centroids to POIs</div>
+      <div class="gap-item"><span class="tag">R</span>OLS regression, interaction modeling, and output visualizations</div>
+      <div class="gap-item"><span class="tag">Zillow ZHVI</span>Primary home value index source across 198 KC ZIP codes</div>
+    </div>
+
+</main>
+
+<footer>
+  <div class="container">
+    Matthew Ong &middot; Kansas City MSA Housing Analysis &middot; 2021&ndash;2026
+  </div>
+</footer>
+
+</body>
+</html>
