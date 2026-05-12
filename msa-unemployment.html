@@ -28,6 +28,28 @@
       font-size: 17px;
     }
 
+    /* ── Back nav ── */
+    .back-nav {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     /* ── Header ── */
     header {
       border-bottom: 1px solid var(--rule);
@@ -163,27 +185,8 @@
     td:first-child { font-family: monospace; font-size: 0.82rem; color: var(--accent); }
     tr:last-child td { border-bottom: none; }
 
-    /* ── Figure / image placeholder ── */
-    .figure {
-      margin: 2.4rem 0;
-    }
-    .figure-img {
-      width: 100%;
-      aspect-ratio: 11 / 5;
-      background: #eceae5;
-      border: 1px solid var(--rule);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.4rem;
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-    .figure-img svg { opacity: 0.35; }
-    /* When you have a real image, replace .figure-img with: */
-    /* <img src="your-image.png" class="figure-real" alt="..."> */
+    /* ── Figure ── */
+    .figure { margin: 2.4rem 0; }
     .figure-real {
       width: 100%;
       border-radius: 6px;
@@ -213,7 +216,9 @@
       border: 1px solid var(--rule);
       border-radius: 6px;
       padding: 1rem 1.2rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
+    .finding:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(26,58,92,0.08); }
     .finding-num {
       font-family: var(--serif);
       font-size: 1.5rem;
@@ -224,6 +229,33 @@
     }
     .finding p { margin: 0; font-size: 0.92rem; }
 
+    /* ── Repo strip ── */
+    .repo-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.2rem;
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      margin-bottom: 2.4rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .repo-strip:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(26, 58, 92, 0.08);
+      text-decoration: none;
+    }
+    .repo-strip svg { flex-shrink: 0; color: var(--accent); }
+    .repo-label { font-family: monospace; font-size: 0.82rem; color: var(--accent); font-weight: 400; }
+    .repo-arrow { margin-left: auto; color: var(--muted); transition: transform 0.2s ease; }
+    .repo-strip:hover .repo-arrow { transform: translateX(4px); }
+
     /* ── Footer ── */
     footer {
       text-align: center;
@@ -233,6 +265,12 @@
       border-top: 1px solid var(--rule);
     }
 
+    /* ── Links ── */
+    a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+
+    code { font-family: monospace; font-size: 0.85rem; color: var(--accent); }
+
     @media (max-width: 600px) {
       .gap-grid { grid-template-columns: 1fr; }
       h1 { font-size: 1.8rem; }
@@ -240,6 +278,12 @@
   </style>
 </head>
 <body>
+
+<nav class="back-nav">
+  <div class="container">
+    <a href="index.html" class="back-link">&#8592; Back to portfolio</a>
+  </div>
+</nav>
 
 <header>
   <div class="container">
@@ -254,6 +298,16 @@
 </header>
 
 <main class="container">
+
+  <!-- Repo strip -->
+  <a href="https://github.com/MatthewOng01/msa_unemployment" target="_blank" rel="noopener noreferrer" class="repo-strip" style="margin-top: 2.4rem;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <span class="repo-label">MatthewOng01 / msa_unemployment</span>
+    <span style="color:var(--muted);font-size:0.82rem;">Replication scripts &mdash; SAS</span>
+    <span class="repo-arrow">&#8594;</span>
+  </a>
 
   <!-- OVERVIEW -->
   <section>
@@ -353,50 +407,43 @@
   <section>
     <h2>Results</h2>
 
-<h3>Top 10 and Bottom 10 MSAs by GDP Growth Score</h3>
+    <h3>Top 10 and Bottom 10 MSAs by GDP Growth Score</h3>
+    <div class="figure">
+      <img
+        src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/msa_growth_map.png"
+        class="figure-real"
+        alt="Top 10 and Bottom 10 MSAs by GDP Growth Score"
+      >
+      <p class="figure-caption">
+        Map highlights the fastest and slowest growing MSAs in the U.S. by their GDP Score.
+      </p>
+    </div>
 
-<div class="figure">
-  <img 
-    src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/msa_growth_map.png"
-    class="figure-real"
-    alt="Top 10 and Bottom 10 MSAs by GDP Growth Score"
-  >
-
-  <p class="figure-caption">
-    Map highlights the fastest and slowest growing MSAs in the U.S. by their GDP Score.
-  </p>
-</div>
-
-    
-<h3>Female Unemployment Rate Gaps — Top 10 vs. Bottom 10 MSAs</h3>
-
-<div class="figure">
-  <img 
-    src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/MSA_male_ur_gaps.png"
-    class="figure-real"
-    alt="Male unemployment rate gaps top and bottom MSAs"
-  >
-
-  <p class="figure-caption">
-    Average Black–White and Hispanic–White male unemployment rate gaps (percentage points),
-    2010–2023. Left panel: top 10 MSAs by GDP score. Right panel: bottom 10.
-  </p>
-</div>
+    <h3>Male Unemployment Rate Gaps — Top 10 vs. Bottom 10 MSAs</h3>
+    <div class="figure">
+      <img
+        src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/MSA_male_ur_gaps.png"
+        class="figure-real"
+        alt="Male unemployment rate gaps top and bottom MSAs"
+      >
+      <p class="figure-caption">
+        Average Black–White and Hispanic–White male unemployment rate gaps (percentage points),
+        2010–2023. Left panel: top 10 MSAs by GDP score. Right panel: bottom 10.
+      </p>
+    </div>
 
     <h3>Female Unemployment Rate Gaps — Top 10 vs. Bottom 10 MSAs</h3>
-
-<div class="figure">
-  <img 
-    src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/MSA_female_ur_gaps.png"
-    class="figure-real"
-    alt="Female unemployment rate gaps top and bottom MSAs"
-  >
-
-  <p class="figure-caption">
-    Average Black–White and Hispanic–White female unemployment rate gaps (percentage points),
-    2010–2023. Left panel: top 10 MSAs by GDP score. Right panel: bottom 10.
-  </p>
-</div>
+    <div class="figure">
+      <img
+        src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/MSA_female_ur_gaps.png"
+        class="figure-real"
+        alt="Female unemployment rate gaps top and bottom MSAs"
+      >
+      <p class="figure-caption">
+        Average Black–White and Hispanic–White female unemployment rate gaps (percentage points),
+        2010–2023. Left panel: top 10 MSAs by GDP score. Right panel: bottom 10.
+      </p>
+    </div>
 
     <h3>Case Study — Kansas City (MSA 28140)</h3>
     <p>
@@ -405,30 +452,27 @@
       single metro over the full study period, illustrating dynamics that can be obscured
       in cross-sectional averages.
     </p>
-   <div class="figure">
-  <img 
-    src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/KansasCity_male_ur_gaps.png" 
-    class="figure-real" 
-    alt="Kansas City Male Gaps"
-  >
-
-  <p class="figure-caption">
-    Male unemployment rate gaps, Kansas City MSA (28140), 2010–2023.
-  </p>
-</div>
-
-<div class="figure">
-  <img 
-    src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/KansasCity_female_ur_gaps.png" 
-    class="figure-real" 
-    alt="Kansas City Female Gaps"
-  >
-
-  <p class="figure-caption">
-    Female unemployment rate gaps, Kansas City MSA (28140), 2010–2023.
-  </p>
-</div>
-</section>
+    <div class="figure">
+      <img
+        src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/KansasCity_male_ur_gaps.png"
+        class="figure-real"
+        alt="Kansas City Male Gaps"
+      >
+      <p class="figure-caption">
+        Male unemployment rate gaps, Kansas City MSA (28140), 2010–2023.
+      </p>
+    </div>
+    <div class="figure">
+      <img
+        src="https://raw.githubusercontent.com/MatthewOng01/msa_unemployment/main/graphs/KansasCity_female_ur_gaps.png"
+        class="figure-real"
+        alt="Kansas City Female Gaps"
+      >
+      <p class="figure-caption">
+        Female unemployment rate gaps, Kansas City MSA (28140), 2010–2023.
+      </p>
+    </div>
+  </section>
 
   <!-- KEY TAKEAWAYS -->
   <section>
