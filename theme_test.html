@@ -1,0 +1,542 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Theme Sytle Test · Matthew Ong</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    /* ── Design Tokens ── */
+    :root {
+      --ink:       #1a1a1a;
+      --muted:     #6b6b6b;
+      --rule:      #e0ddd8;
+      --bg:        #faf9f7;
+      --accent:    #1a3a5c;
+      --accent-lt: #e8edf2;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+    }
+ 
+    /* ── Base ── */
+    html {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    body { background: var(--bg); }
+ 
+    /* ── Layout ── */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 2rem; }
+ 
+    /* ── Back Nav ── */
+    .back-nav {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .back-link {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s ease;
+    }
+    .back-link:hover { color: var(--accent); text-decoration: none; }
+ 
+    /* ── Header ── */
+    header {
+      border-bottom: 1px solid var(--rule);
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+    }
+    .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 720px;
+      margin: 0 auto 1.2rem;
+      color: var(--ink);
+    }
+    .meta {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-top: 0.8rem;
+    }
+    .tool-badges {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.9rem;
+    }
+    .tool-badge {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: var(--accent-lt);
+      border: 1px solid #c4d0db;
+      border-radius: 4px;
+      padding: 0.2rem 0.55rem;
+    }
+ 
+    /* ── Sections ── */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: none; }
+ 
+    /* ── Typography ── */
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    h3 {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2rem 0 0.7rem;
+    }
+    p { margin-bottom: 1.1rem; color: var(--ink); }
+    p:last-child { margin-bottom: 0; }
+    a { color: var(--accent); text-decoration: none; font-weight: 500; }
+    a:hover { text-decoration: underline; }
+    code { font-family: monospace; font-size: 0.85rem; color: var(--accent); }
+ 
+    /* ── Pull Quote ── */
+    .pullquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.6rem 1.4rem;
+      margin: 2rem 0;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--accent);
+      background: var(--accent-lt);
+      border-radius: 0 4px 4px 0;
+    }
+ 
+    /* ── Formula ── */
+    .formula {
+      background: var(--accent-lt);
+      border: 1px solid #c4d0db;
+      border-radius: 6px;
+      padding: 1.2rem 1.6rem;
+      margin: 1.5rem 0;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--accent);
+      overflow-x: auto;
+    }
+    .formula sub { font-size: 0.72em; }
+ 
+    /* ── Two-Column Grid ── */
+    .gap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin: 1.2rem 0;
+    }
+    .gap-item {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .gap-item:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(26,58,92,0.08); }
+    .gap-item .tag {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+ 
+    /* ── Model Spec List ── */
+    .model-spec-row { display: flex; flex-direction: column; gap: 0.6rem; margin: 1.2rem 0; }
+    .model-spec {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.85rem 1.1rem;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .model-spec:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(26,58,92,0.08); }
+    .model-spec .tag {
+      font-family: monospace;
+      font-size: 0.78rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+ 
+    /* ── Table ── */
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 1.2rem 0; }
+    th {
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0.5rem 0.8rem;
+      border-bottom: 2px solid var(--rule);
+    }
+    td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    td:first-child { font-family: monospace; font-size: 0.82rem; color: var(--accent); }
+    tr:last-child td { border-bottom: none; }
+ 
+    /* ── Key Findings ── */
+    .findings { display: flex; flex-direction: column; gap: 1rem; margin: 1.4rem 0; }
+    .finding {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .finding:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(26,58,92,0.08); }
+    .finding-num {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--accent);
+      line-height: 1;
+      min-width: 2rem;
+      font-weight: 700;
+    }
+    .finding p { margin: 0; font-size: 0.92rem; }
+ 
+    /* ── Figures ── */
+    .figure { margin: 2.4rem 0; }
+    .figure-real {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      display: block;
+    }
+    .figure-placeholder {
+      width: 100%;
+      aspect-ratio: 11 / 5;
+      background: #eceae5;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .figure-placeholder svg { opacity: 0.3; }
+    .figure-caption {
+      margin-top: 0.6rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+    }
+ 
+    /* ── Repo Strip ── */
+    .repo-strip {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.9rem 1.2rem;
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      margin-top: 2.4rem;
+      margin-bottom: 2.4rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .repo-strip:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 12px rgba(26,58,92,0.08);
+      text-decoration: none;
+    }
+    .repo-strip svg { flex-shrink: 0; color: var(--accent); }
+    .repo-label { font-family: monospace; font-size: 0.82rem; color: var(--accent); font-weight: 400; }
+    .repo-arrow { margin-left: auto; color: var(--muted); transition: transform 0.2s ease; }
+    .repo-strip:hover .repo-arrow { transform: translateX(4px); }
+ 
+    /* ── PDF Embed ── */
+    .pdf-embed {
+      margin: 2rem 0;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .pdf-embed iframe {
+      width: 100%;
+      height: 640px;
+      display: block;
+      border: none;
+    }
+    .pdf-fallback {
+      padding: 1.4rem 1.6rem;
+      background: white;
+      font-size: 0.88rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+ 
+    /* ── Stats Grid (CAPM-style) ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+      margin: 1.4rem 0;
+    }
+    .stat-card {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem 1.1rem;
+      text-align: center;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .stat-card:hover { border-color: var(--accent); box-shadow: 0 2px 12px rgba(26,58,92,0.08); }
+    .stat-value {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+ 
+    /* ── Conference Badge ── */
+    .conference-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.75rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 1.4rem 0;
+    }
+    .conference-badge svg { color: var(--accent); flex-shrink: 0; }
+    .conference-badge strong { color: var(--ink); font-weight: 500; }
+ 
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-align: center;
+    }
+ 
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      .gap-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      h1 { font-size: 1.8rem; }
+      .tool-badges { justify-content: flex-start; }
+      .pdf-embed iframe { height: 420px; }
+ 
+      /* Repo strip */
+      .repo-strip { flex-wrap: wrap; gap: 0.5rem; }
+      .repo-label {
+        font-size: 0.75rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 200px;
+      }
+      .repo-strip span[style] { display: none; }
+      .repo-arrow { margin-left: 0; }
+ 
+      /* Images */
+      .figure-real { width: 100%; height: auto; }
+ 
+      /* Table */
+      table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+      }
+      td, th { white-space: normal; min-width: 80px; }
+      td:first-child { min-width: 90px; }
+    }
+ 
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<header>
+  <div class="container">
+    <p class="eyebrow">Spatial Economics &middot; Kansas City MSA</p>
+    <h1>Price-Tier Convergence and Spatial Housing Appreciation: Evidence from the Kansas City MSA</h1>
+    <p class="meta">Matthew Ong &middot; 2021&ndash;2026 &middot; Cross-Sectional OLS Analysis</p>
+    <div class="tool-badges">
+      <span class="tool-badge">SAS</span>
+      <span class="tool-badge">QGIS</span>
+      <span class="tool-badge">R</span>
+      <span class="tool-badge">Zillow ZHVI</span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- Repo strip -->
+  <a href="https://github.com/MatthewOng01/KC_House_Price_Appreciation" target="_blank" rel="noopener noreferrer" class="repo-strip" style="margin-top: 2.4rem;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+    </svg>
+    <span class="repo-label">Code Repository</span>
+    <span style="color:var(--muted);font-size:0.82rem;"> github.com/MatthewOng01/KC_House_Price_Appreciation</span>
+    <span class="repo-arrow">&#8594;</span>
+  </a>
+
+  
+  <section>
+    <h2>Methodology</h2>
+
+    <h3>1. Price Appreciation Metric</h3>
+    <p>Five-year cumulative price appreciation is measured using log price change. This formulation reduces skewness in housing price distributions while permitting approximate percentage interpretation:</p>
+    <div class="formula">
+      Price Appreciation = ln(P<sub>final</sub>) &minus; ln(P<sub>initial</sub>)
+    </div>
+
+    <h3>2. Spatial Variables</h3>
+    <p>Distances were computed in QGIS from ZIP-code centroids to five major Points of Interest (POIs), then exported as CSV inputs for regression analysis:</p>
+    <div class="gap-grid">
+      <div class="gap-item"><span class="tag">dist_plaza</span>The Plaza</div>
+      <div class="gap-item"><span class="tag">dist_powerlight</span>Power &amp; Light District</div>
+      <div class="gap-item"><span class="tag">dist_legends</span>The Legends</div>
+      <div class="gap-item"><span class="tag">dist_mci</span>MCI Airport</div>
+      <div class="gap-item"><span class="tag">dist_lees_summit</span>Lee&rsquo;s Summit</div>
+    </div>
+    <p>An urban core distance composite was constructed as the mean of the two primary commercial hubs, capturing compounded centrality relative to Kansas City&rsquo;s historic commercial core:</p>
+    <div class="formula">
+      UrbanCoreDist = (Distance<sub>Plaza</sub> + Distance<sub>PowerLight</sub>) / 2
+    </div>
+
+<section>
+  <h2>Model Summary</h2>
+   <table>
+      <thead>
+        <tr>
+          <th>Specification</th>
+          <th>Primary Regressor</th>
+          <th>R&sup2;</th>
+          <th>Key Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>baseline</td>
+          <td>Distance to single POI</td>
+          <td>&mdash;</td>
+          <td>Weak spatial gradient</td>
+        </tr>
+        <tr>
+          <td>extended</td>
+          <td>UrbanCoreDist composite</td>
+          <td>&mdash;</td>
+          <td>Slight improvement; urban core distance negligible</td>
+        </tr>
+        <tr>
+          <td>interaction</td>
+          <td>UrbanCoreDist &times; ln(P<sub>initial</sub>)</td>
+          <td>&asymp; 0.34</td>
+          <td>Price tier dominant; interaction economically small</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+
+
+<section>
+    <h2>Full Report</h2>
+    <p>The complete write-up, including detailed derivations and extended discussion, is embedded below.</p>
+    <div class="pdf-embed">
+      <iframe
+        src="https://MatthewOng01.github.io/CAPM_writeup.pdf"
+        title="CAPM Write-up — Matthew Ong"
+        aria-label="Embedded PDF: CAPM write-up">
+      </iframe>
+      <div class="pdf-fallback">
+        If the PDF does not load, <a href="CAPM_writeup.pdf" target="_blank">download it here</a>.
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    Matthew Ong · Texas A&amp;M University · 2025
+  </div>
+</footer>
+
+</body>
+</html>
