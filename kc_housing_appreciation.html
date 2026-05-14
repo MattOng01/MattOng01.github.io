@@ -198,6 +198,27 @@ footer {
   .gap-grid { grid-template-columns: 1fr; }
   h1 { font-size: 1.8rem; }
   .tool-badges { justify-content: flex-start; }
+
+  .repo-strip {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .repo-label {
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+  }
+
+  .repo-strip span[style] {
+    display: none;
+  }
+
+  .repo-arrow {
+    margin-left: 0;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; }
